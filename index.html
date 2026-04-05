@@ -2,189 +2,350 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jeremy Brecevic - Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
-  @page { size: A4; margin: 0; }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: "Segoe UI", Calibri, Arial, sans-serif; color: #2d2d2d; background: #fff; font-size: 9pt; line-height: 1.45; }
-
-  .page { width: 210mm; min-height: 297mm; position: relative; page-break-after: always; overflow: hidden; }
-  .page:last-child { page-break-after: auto; }
-
-  /* ---- SIDEBAR ---- */
-  .sidebar { position: absolute; top: 0; left: 0; width: 60mm; height: 100%; background: #0f1f3d; color: #e0e0e0; padding: 0; }
-  .sidebar-inner { padding: 5mm 5mm 5mm 5mm; }
-  .photo-wrap { text-align: center; margin-bottom: 5px; }
-  .photo { width: 75px; height: 75px; border-radius: 50%; object-fit: cover; border: 3px solid #7eb8da; }
-
-  .sidebar h2 { font-size: 9.5pt; color: #7eb8da; margin: 6px 0 3px 0; font-weight: 700; letter-spacing: 0.3px; }
-  .sidebar h3 { font-size: 7.5pt; color: #a0b8d0; font-weight: 700; margin: 3px 0 1px 0; }
-  .sidebar p { font-size: 7.5pt; line-height: 1.35; color: #d0d0d0; margin-bottom: 1px; }
-  .sidebar a { color: #a8cce0; text-decoration: none; }
-  .sidebar ul { list-style: disc; padding-left: 13px; margin: 0; }
-  .sidebar li { font-size: 7.5pt; line-height: 1.35; margin-bottom: 1px; color: #d0d0d0; }
-  .s-section { margin-bottom: 5px; }
-  .s-divider { border: none; border-top: 1px solid #2a4060; margin: 4px 0; }
-  .sidebar2 { padding-top: 5mm; }
-
-  /* ---- MAIN ---- */
-  .main { margin-left: 61mm; padding: 5mm 5mm 3mm 6mm; }
-
-  /* ATS-friendly: use h1 for name */
-  h1.name { font-size: 18pt; font-weight: 700; color: #0f1f3d; line-height: 1.0; margin: 0; }
-
-  /* Summary */
-  .summary { font-size: 7.5pt; line-height: 1.35; color: #3a3a3a; margin: 2px 0 3px 0; padding: 2px 0 3px 0; border-bottom: 2px solid #1a3a6a; }
-  .summary-title { font-size: 8.5pt; font-weight: 700; color: #0f1f3d; margin-bottom: 1px; }
-
-  /* ATS-friendly: use h2 for section headings */
-  h2.section-title { font-size: 10pt; font-weight: 700; color: #0f1f3d; margin: 3px 0 2px 0; letter-spacing: 0.3px; }
-
-  /* ---- TIMELINE ---- */
-  .timeline { position: relative; margin-left: 5px; padding-left: 18px; }
-  .timeline::before {
-    content: "";
-    position: absolute;
-    left: 3px; top: 0; bottom: 0;
-    width: 2px;
-    background: #1a3a6a;
+  :root {
+    --navy: #0f1f3d;
+    --navy-mid: #1a3a6a;
+    --accent: #7eb8da;
+    --sidebar-bg: #0f1f3d;
+    --text: #2d2d2d;
+    --text-light: #555;
+    --metric: #0f1f3d;
+    --sidebar-text: #d0d0d0;
+    --white: #ffffff;
   }
 
-  /* ATS-friendly: use article for each role, h3 for title */
-  article.entry { position: relative; margin-bottom: 3px; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "DM Sans", "Segoe UI", sans-serif;
+    color: var(--text);
+    background: #f5f6f8;
+    line-height: 1.55;
+    font-size: 15px;
+  }
+
+  /* ---- LAYOUT ---- */
+  .wrap {
+    display: flex;
+    max-width: 1100px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background: var(--white);
+    box-shadow: 0 0 40px rgba(0,0,0,0.08);
+  }
+
+  /* ---- SIDEBAR ---- */
+  .sidebar {
+    width: 300px;
+    min-width: 300px;
+    background: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    padding: 40px 28px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+  }
+  .photo-wrap { text-align: center; margin-bottom: 20px; }
+  .photo {
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent);
+  }
+
+  .sidebar h2 {
+    font-family: "DM Sans", sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin: 24px 0 10px 0;
+    font-weight: 700;
+  }
+  .sidebar h2:first-of-type { margin-top: 0; }
+  .sidebar h3 {
+    font-size: 11px;
+    color: #8899aa;
+    font-weight: 600;
+    margin: 10px 0 2px 0;
+  }
+  .sidebar p {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--sidebar-text);
+    margin-bottom: 2px;
+  }
+  .sidebar a { color: var(--accent); text-decoration: none; }
+  .sidebar a:hover { text-decoration: underline; }
+  .sidebar ul { list-style: none; padding: 0; }
+  .sidebar li {
+    font-size: 13px;
+    line-height: 1.5;
+    padding: 2px 0;
+    color: var(--sidebar-text);
+  }
+  .sidebar li::before {
+    content: "▸ ";
+    color: var(--accent);
+    font-size: 10px;
+  }
+  .s-divider {
+    border: none;
+    border-top: 1px solid #2a4060;
+    margin: 18px 0;
+  }
+  .social-icons {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+    align-items: center;
+  }
+  .social-icons a { display: inline-flex; }
+  .social-icons svg { transition: opacity 0.2s; }
+  .social-icons a:hover svg { opacity: 0.7; }
+
+  /* ---- MAIN ---- */
+  .main {
+    flex: 1;
+    padding: 40px 44px;
+    min-width: 0;
+  }
+
+  h1.name {
+    font-family: "Playfair Display", serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  /* Summary */
+  .summary {
+    font-size: 14px;
+    line-height: 1.65;
+    color: #444;
+    margin: 12px 0 20px 0;
+    padding: 0 0 18px 0;
+    border-bottom: 2px solid var(--navy-mid);
+  }
+
+  /* Section headings */
+  h2.section-title {
+    font-family: "DM Sans", sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--navy);
+    margin: 28px 0 16px 0;
+    font-weight: 700;
+  }
+
+  /* ---- TIMELINE ---- */
+  .timeline {
+    position: relative;
+    margin-left: 8px;
+    padding-left: 24px;
+    border-left: 2px solid var(--navy-mid);
+  }
+
+  article.entry {
+    position: relative;
+    margin-bottom: 24px;
+  }
   article.entry::before {
     content: "";
     position: absolute;
-    left: -19px; top: 6px;
-    width: 10px; height: 10px;
+    left: -31px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
-    background: #fff;
-    border: 2px solid #1a3a6a;
-    z-index: 1;
+    background: var(--white);
+    border: 3px solid var(--navy-mid);
   }
 
-  .entry-meta { font-size: 7pt; color: #555; line-height: 1.3; }
-  .entry-meta .date { color: #666; }
-  h3.entry-title { font-size: 9pt; font-weight: 700; color: #0f1f3d; margin: 1px 0 2px 0; }
-  article.entry ul { padding-left: 14px; margin: 1px 0 0 0; }
-  article.entry li { font-size: 7.5pt; line-height: 1.35; margin-bottom: 1px; }
-  article.entry li strong.m { color: #0f1f3d; font-weight: 700; }
+  .entry-meta {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-bottom: 2px;
+    letter-spacing: 0.3px;
+  }
+  h3.entry-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    margin: 2px 0 8px 0;
+    line-height: 1.3;
+  }
+  article.entry ul {
+    padding-left: 18px;
+    margin: 0;
+  }
+  article.entry li {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 6px;
+    color: #3a3a3a;
+  }
+  article.entry li strong.m {
+    color: var(--metric);
+    font-weight: 700;
+  }
 
-  @media print {
-    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .page { margin: 0; box-shadow: none; }
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 768px) {
+    .wrap { flex-direction: column; }
+    .sidebar {
+      width: 100%;
+      min-width: 100%;
+      position: relative;
+      height: auto;
+      padding: 28px 24px;
+    }
+    .main { padding: 28px 20px; }
+    h1.name { font-size: 28px; }
+    h3.entry-title { font-size: 16px; }
   }
 </style>
 </head>
 <body>
 
-<!-- =========== PAGE 1 =========== -->
-<div class="page">
-  <div class="sidebar">
-    <div class="sidebar-inner">
-      <div class="photo-wrap">
-        <img class="photo" src="data:image/jpeg;base64,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" alt="Jeremy Brecevic">
-      </div>
-
-      <div class="s-section">
-        <h2>Contact</h2>
-        <h3>Phone</h3>
-        <p>+44 (0) 7777 520 725</p>
-        <h3>Email</h3>
-        <p style="font-size:7pt;">JeremyBrecevic@gmail.com</p>
-        <div style="margin-top:4px; display:flex; gap:8px; align-items:center;">
-          <a href="https://www.linkedin.com/in/jbrecevic/" style="display:inline-block;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="#7eb8da" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-            </svg>
-          </a>
-          <a href="https://github.com/JBrecevic" style="display:inline-block;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="#7eb8da" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="s-section">
-        <h3>Citizenship</h3>
-        <ul><li>British</li><li>Canadian</li></ul>
-      </div>
-
-      <hr class="s-divider">
-
-      <div class="s-section">
-        <h2>Education</h2>
-        <p><strong>2023</strong></p>
-        <p><strong style="color:#fff;">Postgraduate Diploma</strong></p>
-        <p>Data Science - Machine Learning</p>
-        <p>City, University of London</p>
-        <br>
-        <p><strong>2013</strong></p>
-        <p><strong style="color:#fff;">Honours BBA</strong></p>
-        <p>Finance, Minor in Economics</p>
-        <p>Wilfrid Laurier University</p>
-      </div>
-
-      <hr class="s-divider">
-
-      <div class="s-section">
-        <h2>Technical Skills</h2>
-        <ul>
-          <li>Applied Predictive Modeling</li>
-          <li>Big Data / PySpark</li>
-          <li>Cloud Compute (AWS/GCP)</li>
-          <li>Computer Vision</li>
-          <li>Data Pre-Processing</li>
-          <li>Generative Deep Learning</li>
-          <li>Keras / PyTorch / TensorFlow</li>
-          <li>Knowledge Graphs</li>
-          <li>Python</li>
-          <li>Supervised &amp; Unsupervised Learning</li>
-          <li>Hyperparameter Tuning</li>
-        </ul>
-      </div>
-
-      <hr class="s-divider">
-
-      <div class="s-section">
-        <h2>Expertise</h2>
-        <ul>
-          <li>Complex B2B Sales</li>
-          <li>PAIC / MEDDPICC</li>
-          <li>C-Suite Engagement</li>
-          <li>Capital Market Workflows</li>
-          <li>TAM / SAM / SOM</li>
-          <li>Electronic Trading</li>
-          <li>Negotiations / Redlines</li>
-        </ul>
-      </div>
+<div class="wrap">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="photo-wrap">
+      <img class="photo" src="data:image/jpeg;base64,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" alt="Jeremy Brecevic">
     </div>
-  </div>
 
-  <div class="main">
+    <h2>Contact</h2>
+    <h3>Phone</h3>
+    <p>+44 (0) 7777 520 725</p>
+    <h3>Email</h3>
+    <p><a href="mailto:JeremyBrecevic@gmail.com">JeremyBrecevic@gmail.com</a></p>
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/jbrecevic/" target="_blank" rel="noopener">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#7eb8da"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="https://github.com/JBrecevic" target="_blank" rel="noopener">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#7eb8da"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
+    </div>
+
+    <h3>Citizenship</h3>
+    <ul><li>British</li><li>Canadian</li></ul>
+
+    <hr class="s-divider">
+
+    <h2>Education</h2>
+    <p><strong style="color:#fff;">Postgraduate Diploma</strong> <span style="opacity:0.6;">(2023)</span></p>
+    <p>Data Science &amp; Machine Learning</p>
+    <p style="opacity:0.6;">City, University of London</p>
+    <br>
+    <p><strong style="color:#fff;">Honours BBA</strong> <span style="opacity:0.6;">(2013)</span></p>
+    <p>Finance, Minor in Economics</p>
+    <p style="opacity:0.6;">Wilfrid Laurier University</p>
+
+    <hr class="s-divider">
+
+    <h2>Technical Skills</h2>
+    <ul>
+      <li>Applied Predictive Modeling</li>
+      <li>Big Data / PySpark</li>
+      <li>Cloud Compute (AWS/GCP)</li>
+      <li>Computer Vision</li>
+      <li>Data Pre-Processing</li>
+      <li>Generative Deep Learning</li>
+      <li>Keras / PyTorch / TensorFlow</li>
+      <li>Knowledge Graphs</li>
+      <li>Python</li>
+      <li>Supervised &amp; Unsupervised Learning</li>
+      <li>Hyperparameter Tuning</li>
+    </ul>
+
+    <hr class="s-divider">
+
+    <h2>Expertise</h2>
+    <ul>
+      <li>Complex B2B Sales</li>
+      <li>PAIC / MEDDPICC</li>
+      <li>C-Suite Engagement</li>
+      <li>Capital Market Workflows</li>
+      <li>TAM / SAM / SOM</li>
+      <li>Electronic Trading</li>
+      <li>Negotiations / Redlines</li>
+    </ul>
+
+    <hr class="s-divider">
+
+    <h2>Sales Tools</h2>
+    <ul>
+      <li>Salesforce CRM</li>
+      <li>HubSpot</li>
+      <li>Clay (Contact Enrichment)</li>
+      <li>Microsoft Dynamics CRM</li>
+      <li>LinkedIn Sales Navigator</li>
+      <li>Bloomberg Terminal &amp; APIs</li>
+      <li>Snowflake Marketplace</li>
+      <li>Fathom (AI Notetaker)</li>
+      <li>Microsoft Office Suite</li>
+      <li>Google Workspace</li>
+    </ul>
+
+    <hr class="s-divider">
+
+    <h2>Industry Verticals</h2>
+    <ul>
+      <li>Tier 1 Investment Banks</li>
+      <li>Hedge Funds</li>
+      <li>Asset Managers</li>
+      <li>Pension Funds</li>
+      <li>Insurance</li>
+      <li>Central Banks &amp; Regulators</li>
+    </ul>
+
+    <hr class="s-divider">
+
+    <h2>References</h2>
+    <p><strong style="color:#fff;">Mark Gemmell</strong></p>
+    <p style="opacity:0.6;">Head of Engineering, RegGenome</p>
+    <br>
+    <p><strong style="color:#fff;">James Corrigan</strong></p>
+    <p style="opacity:0.6;">CEO, GoldenSource</p>
+    <br>
+    <p><strong style="color:#fff;">Dave Sanderson</strong></p>
+    <p style="opacity:0.6;">Partner, Red Jacket Capital</p>
+    <br>
+    <p><strong style="color:#fff;">Mark Betteridge</strong></p>
+    <p style="opacity:0.6;">Fmr. Global Head of FI, Bloomberg LP</p>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
     <h1 class="name">Jeremy Brecevic</h1>
 
     <div class="summary">
-      <div class="summary-title">Professional Summary</div>
-      Enterprise SaaS sales executive with 12+ years spanning capital markets trading, data infrastructure, and complex B2B technology sales. Track record of exceeding quota at Bloomberg, Beacon Platform, and GoldenSource across EMEA and North America. Combines deep domain expertise in fixed income, derivatives, and regulatory data with applied machine learning skills (Post-Graduate Diploma in Data Science &amp; ML, TensorFlow, NLP, Python) to sell consultatively into Tier 1 banks, asset managers, and hedge funds. Builds quantified, client-specific business cases that tie data infrastructure investment to measurable outcomes &mdash; reduced manual effort, lower FRTB capital charges, faster time-to-market. Designed and engineered a repeatable enterprise sales process &mdash; building the front-end application and back-end workflow automation from scratch &mdash; integrating MEDDPICC/PAIC qualification, Salesforce, and HubSpot into a single orchestrated pipeline. Adept at cultivating C-Suite relationships and orchestrating multi-stakeholder deal cycles from first meeting to close.
+      Enterprise SaaS sales executive with 12+ years spanning capital markets trading, data infrastructure, and complex B2B technology sales. Track record of exceeding quota at Bloomberg, Beacon Platform, and GoldenSource across EMEA and North America. Combines deep domain expertise in fixed income, derivatives, and regulatory data with applied machine learning skills (Post-Graduate Diploma in Data Science &amp; ML, TensorFlow, NLP, Python) to sell consultatively into Tier 1 banks, asset managers, and hedge funds. Builds quantified, client-specific business cases that tie data infrastructure investment to measurable outcomes&mdash;reduced manual effort, lower FRTB capital charges, faster time-to-market. Designed and engineered a repeatable enterprise sales process&mdash;building the front-end application and back-end workflow automation from scratch&mdash;integrating MEDDPICC/PAIC qualification, Salesforce, and HubSpot into a single orchestrated pipeline.
     </div>
 
     <h2 class="section-title">Experience</h2>
 
     <div class="timeline">
       <article class="entry">
-        <div class="entry-meta">
-          <span class="date">Jul 2025 &ndash; Present</span> &middot; GoldenSource &middot; London, UK
-        </div>
+        <div class="entry-meta">Jul 2025 &ndash; Present &middot; GoldenSource &middot; London, UK</div>
         <h3 class="entry-title">Global Sales Executive, EMEA</h3>
         <ul>
           <li>Closed <strong class="m">$2.6mm ARR</strong> vs $2mm target in first year (<strong class="m">130% attainment</strong>), including an enterprise MSA with a Tier I global investment bank.</li>
           <li>Grew existing account revenue by <strong class="m">11%</strong> through expansion selling into adjacent use cases (Private Markets data, FRTB risk).</li>
           <li>Established Snowflake co-sell partnership, unlocking cloud-migration pipeline, joint Snowflake Marketplace offerings, and co-sponsored thought-leadership events across EMEA.</li>
-          <li>Co-created quantified business cases with C-Suite stakeholders (CDO, CTO, COO) at Tier 1 banks, hedge funds, and asset managers &mdash; embedding client-unique requirements and industry benchmarks to accelerate deal progression.</li>
+          <li>Co-created quantified business cases with C-Suite stakeholders (CDO, CTO, COO) at Tier 1 banks, hedge funds, and asset managers&mdash;embedding client-unique requirements and industry benchmarks to accelerate deal progression.</li>
           <li>Conceived and executed targeted thought-leadership events and roundtables, generating <strong class="m">$3.2mm in qualified pipeline</strong> from net-new prospects across Nordic and Southern European markets.</li>
-          <li>Engineered a bespoke sales-process application (front-end UI and back-end workflow automation), codifying the full MEDDPICC lifecycle from SDR qualification through deal close and connecting Salesforce and HubSpot into one orchestrated system &mdash; reducing the average sales cycle by <strong class="m">97 days</strong>.</li>
+          <li>Engineered a bespoke sales-process application (front-end UI and back-end workflow automation), codifying the full MEDDPICC lifecycle from SDR qualification through deal close and connecting Salesforce and HubSpot into one orchestrated system&mdash;reducing the average sales cycle by <strong class="m">97 days</strong>.</li>
           <li>Applied machine learning techniques (NLP, classification models) to enrich prospect data, score ICP accounts, and prioritise the EMEA Top 30 target list.</li>
         </ul>
       </article>
@@ -194,9 +355,7 @@
 
     <div class="timeline">
       <article class="entry">
-        <div class="entry-meta">
-          <span class="date">Jun 2024 &ndash; Jun 2025</span> &middot; JUXT (juxt.pro) &middot; London, UK &middot; Contract
-        </div>
+        <div class="entry-meta">Jun 2024 &ndash; Jun 2025 &middot; JUXT (juxt.pro) &middot; London, UK &middot; Contract</div>
         <h3 class="entry-title">Sales Consultant &amp; Advisor</h3>
         <ul>
           <li><strong class="m">$2.6mm actual vs $2mm target</strong>, MSA signed with a Tier I Global Investment Bank on a Trading/Risk system overhaul for Structured Products.</li>
@@ -207,21 +366,17 @@
       </article>
 
       <article class="entry">
-        <div class="entry-meta">
-          <span class="date">Apr 2024 &ndash; Jan 2025</span> &middot; Deep Market Making Inc. &middot; Contract
-        </div>
+        <div class="entry-meta">Apr 2024 &ndash; Jan 2025 &middot; Deep Market Making Inc. &middot; Contract</div>
         <h3 class="entry-title">Sales Consultant &amp; Advisor</h3>
         <ul>
           <li>Provided sales consulting and go-to-market guidance for a deep-learning evaluated price feed for USD HY/IG Credit, with 5 years of tick history.</li>
-          <li>Positioned the product around FRTB capital relief &mdash; solving the dislocation between risk books and PnL, freeing up balance sheet capital via the internal approach vs. standard.</li>
+          <li>Positioned the product around FRTB capital relief&mdash;solving the dislocation between risk books and PnL, freeing up balance sheet capital via the internal approach vs. standard.</li>
           <li>Developed prospect targeting strategy for Tier 1 sell-side desks and buy-side risk teams.</li>
         </ul>
       </article>
 
       <article class="entry">
-        <div class="entry-meta">
-          <span class="date">Jan 2024 &ndash; Apr 2024</span> &middot; RegGenome &middot; London, UK &middot; Contract
-        </div>
+        <div class="entry-meta">Jan 2024 &ndash; Apr 2024 &middot; RegGenome &middot; London, UK &middot; Contract</div>
         <h3 class="entry-title">Sales Executive</h3>
         <ul>
           <li>Worked with CEO, COO, Head of Marketing and Head of Product to establish product-market fit and map out regional sales plans in accordance with the TAM, from zero.</li>
@@ -236,9 +391,7 @@
 
     <div class="timeline">
       <article class="entry">
-        <div class="entry-meta">
-          <span class="date">2022 &ndash; 2023</span> &middot; Beacon Platform &middot; London, UK
-        </div>
+        <div class="entry-meta">2022 &ndash; 2023 &middot; Beacon Platform &middot; London, UK</div>
         <h3 class="entry-title">Sales Executive</h3>
         <ul>
           <li><strong class="m">$1.7mm in ARR</strong> vs $1.215mm target, <strong class="m">$288k Professional Services</strong> vs $500K target.</li>
@@ -249,9 +402,7 @@
       </article>
 
       <article class="entry">
-        <div class="entry-meta">
-          <span class="date">2021 &ndash; 2022</span> &middot; Overbond Ltd &middot; London, UK
-        </div>
+        <div class="entry-meta">2021 &ndash; 2022 &middot; Overbond Ltd &middot; London, UK</div>
         <h3 class="entry-title">Head of Sales</h3>
         <ul>
           <li>Closed <strong class="m">$500k USD ARR</strong> in first six months vs pro-rata $600k target on a new product suite, developing the first set of client case studies and best practices.</li>
@@ -260,127 +411,58 @@
           <li>Keynote speaker on eTrading Liquidity at the 2022 Fixed Income Leaders Summit (Nice, France) to an audience of <strong class="m">~150 financial institutions</strong>.</li>
         </ul>
       </article>
-    </div>
-  </div>
-</div>
 
-<!-- =========== PAGE 2 =========== -->
-<div class="page">
-  <div class="sidebar">
-    <div class="sidebar-inner sidebar2">
-      <div class="s-section">
-        <h2>Sales Tools &amp; Platforms</h2>
-        <ul>
-          <li>Salesforce CRM</li>
-          <li>HubSpot</li>
-          <li>Clay (Contact Enrichment)</li>
-          <li>Microsoft Dynamics CRM</li>
-          <li>LinkedIn Sales Navigator</li>
-          <li>Bloomberg Terminal &amp; APIs</li>
-          <li>Snowflake Marketplace</li>
-          <li>Fathom (AI Notetaker)</li>
-          <li>Microsoft Office Suite</li>
-          <li>Google Workspace</li>
-        </ul>
-      </div>
-
-      <hr class="s-divider">
-
-      <div class="s-section">
-        <h2>Industry Verticals</h2>
-        <ul>
-          <li>Tier 1 Investment Banks</li>
-          <li>Hedge Funds</li>
-          <li>Asset Managers</li>
-          <li>Pension Funds</li>
-          <li>Insurance</li>
-          <li>Central Banks &amp; Regulators</li>
-        </ul>
-      </div>
-
-      <hr class="s-divider">
-
-      <div class="s-section">
-        <h2>References</h2>
-        <p><strong style="color:#fff;">Mark Gemmell</strong></p>
-        <p>Head of Engineering, RegGenome</p>
-        <br>
-        <p><strong style="color:#fff;">James Corrigan</strong></p>
-        <p>CEO, GoldenSource</p>
-        <br>
-        <p><strong style="color:#fff;">Dave Sanderson</strong></p>
-        <p>Partner, Red Jacket Capital</p>
-        <br>
-        <p><strong style="color:#fff;">Mark Betteridge</strong></p>
-        <p>Fmr. Global Head of Fixed Income, Bloomberg LP</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="main">
-    <div class="timeline">
       <article class="entry">
-        <div class="entry-meta">
-          <span class="date">2020 &ndash; 2021</span> &middot; Sinusoidal Capital &middot; London, UK
-        </div>
+        <div class="entry-meta">2020 &ndash; 2021 &middot; Sinusoidal Capital &middot; London, UK</div>
         <h3 class="entry-title">Principal</h3>
         <ul>
-          <li>Launched a systematic trading strategy using Neural Networks and NLP in Jupyter Lab, that gives an edge in trading Rare &amp; Fine Wines.</li>
+          <li>Launched a systematic trading strategy using Neural Networks and NLP in Jupyter Lab for trading Rare &amp; Fine Wines.</li>
           <li>Developed a price action database using RESTful API feeds and data scraping techniques to provide visibility across fragmented exchanges and private sellers.</li>
           <li>Forged relationships with Wine Masters at renowned vineyards in France and Italy to receive allocations on new vintages.</li>
         </ul>
       </article>
 
       <article class="entry">
-        <div class="entry-meta">
-          <span class="date">2018 &ndash; 2020</span> &middot; Bloomberg LP &middot; London, UK
-        </div>
+        <div class="entry-meta">2018 &ndash; 2020 &middot; Bloomberg LP &middot; London, UK</div>
         <h3 class="entry-title">Enterprise Sales &ndash; Nordics</h3>
         <ul>
           <li><strong class="m">$825K vs $625K</strong> Terminal Sales target, <strong class="m">$1.2mm vs $200k</strong> Product target (Trading/Risk System + Data).</li>
-          <li>Coordinated weekly updates, monthly forecasts and quarterly committed forecasts of key KPIs to the management team and provided sales steering on strategy adjustments to maximize revenue.</li>
-          <li>Managed complex C-Suite relationships at Tier 1 Banks, identified key players within the organizations, and uncovered critical business questions relating to their electronic trading needs in the face of MiFID II.</li>
-          <li>Transformed eTrading markets in the Nordics with an electronified workflow, driving systemic change away from a traditional voice workflow (<strong class="m">~330% increase</strong> 2018&ndash;2020).</li>
+          <li>Managed complex C-Suite relationships at Tier 1 Banks, uncovering critical business questions relating to electronic trading needs in the face of MiFID II.</li>
+          <li>Transformed eTrading markets in the Nordics with an electronified workflow, driving systemic change away from traditional voice workflow (<strong class="m">~330% increase</strong> 2018&ndash;2020).</li>
         </ul>
       </article>
 
       <article class="entry">
-        <div class="entry-meta">
-          <span class="date">2017 &ndash; 2018</span> &middot; Bloomberg LP &middot; London, UK
-        </div>
+        <div class="entry-meta">2017 &ndash; 2018 &middot; Bloomberg LP &middot; London, UK</div>
         <h3 class="entry-title">Vice President, FICC eTrading</h3>
         <ul>
           <li>Prepared and led responses to RFIs and RFPs, resulting in <strong class="m">&gt;$50mm in trading venue fees</strong> for 2018.</li>
           <li>Captured a market leading share of <strong class="m">41%</strong> of trading activity on the Multilateral Trade Facility in Europe.</li>
-          <li>Established a go-to-market strategy for cash and rates in the EMEA region, collaborating with sales engineering, client engineering, product, legal, and senior leadership.</li>
+          <li>Established a go-to-market strategy for cash and rates in the EMEA region.</li>
         </ul>
       </article>
 
       <article class="entry">
-        <div class="entry-meta">
-          <span class="date">2014 &ndash; 2017</span> &middot; Bloomberg LP &middot; London, UK
-        </div>
+        <div class="entry-meta">2014 &ndash; 2017 &middot; Bloomberg LP &middot; London, UK</div>
         <h3 class="entry-title">Structured Products Associate</h3>
         <ul>
-          <li>Productized Derivatives Pricing Library (DLIB) resulting in <strong class="m">79 Terminal sales</strong> for 2017 (<strong class="m">1.7mm ARR</strong>).</li>
-          <li>Cultivated Data Engineering skills for communicating programmatically with the Bloomberg Terminal through Python and VBA to perform regression analysis for bespoke relative value models.</li>
-          <li>Developed comprehensive valuation knowledge of exotic pricing methodologies (Libor Market Model, Hull White Two Factor, Heston, Stochastic Local Volatility) including calibration.</li>
+          <li>Productized Derivatives Pricing Library (DLIB) resulting in <strong class="m">79 Terminal sales</strong> (<strong class="m">1.7mm ARR</strong>).</li>
+          <li>Built Python and VBA integrations for Bloomberg APIs; performed regression analysis for bespoke relative value models.</li>
+          <li>Developed comprehensive valuation knowledge of exotic pricing methodologies (LMM, Hull White, Heston, SLV) including calibration.</li>
         </ul>
       </article>
 
       <article class="entry">
-        <div class="entry-meta">
-          <span class="date">2013 &ndash; 2014</span> &middot; DSS Capital &middot; Toronto, Canada
-        </div>
+        <div class="entry-meta">2013 &ndash; 2014 &middot; DSS Capital &middot; Toronto, Canada</div>
         <h3 class="entry-title">FX Trader</h3>
         <ul>
           <li>Proprietary book returned <strong class="m">37% annualised</strong>, beating benchmark.</li>
-          <li>Developed macro theses and expressed views through spot FX and option positions based on volatility skew.</li>
+          <li>Developed macro theses expressed through spot FX and option positions based on volatility skew.</li>
           <li>Created and implemented a Risk-Reversal trading strategy still operational today.</li>
         </ul>
       </article>
     </div>
-  </div>
+  </main>
 </div>
 
 </body>
